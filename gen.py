@@ -8,10 +8,18 @@ data = json.load(f)
   
 for name in glob.glob('static/memes/*'):
     if (not(any(x['src'] == name for x in data))):
-        data.append({
-            'src': name,
-            'time': str(os.stat(name).st_ctime)
-        })
+        if ("txt" in name):
+            txt = open(name, 'r')
+            data.append({
+                'content': txt.read(),
+                'src': name,
+                'time': str(os.stat(name).st_ctime)
+            })
+        else:
+            data.append({
+                'src': name,
+                'time': str(os.stat(name).st_ctime)
+            })
 
 data.sort(key=lambda x: x['time'], reverse=True)
 
@@ -26,6 +34,11 @@ cards = ''
 i = 0
 PAGE = 5
 
+IMG_TAG = """
+<img src="/__SRC__" class="w-full" />
+    <div class="text-right mt-6 mb-4 sm:text-sm px-2 text-gray-600"> — Posted __TIME__</div>
+"""
+
 while i <= math.floor(len(data) / PAGE):
     cards = ''
 
@@ -39,7 +52,14 @@ while i <= math.floor(len(data) / PAGE):
         index = open('./pages/' + str(i) + '/index.html', 'w')
     
     for src in data[(PAGE * (i)):(PAGE * (i + 1))]:
-        cards += card.replace('__SRC__', src['src']).replace(
+        card_content = ''
+
+        if 'content' in src:
+            card_content = src['content']
+        else:
+            card_content = IMG_TAG.replace('__SRC__', src['src'])
+
+        cards += card.replace('__CONTENT__', card_content).replace(
             '__TIME__', datetime.datetime.fromtimestamp(float(src['time'])).strftime('%b %d, %Y %I:%M %p')
         )
     
