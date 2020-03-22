@@ -1,2 +1,2 @@
-<blockquote class="reddit-card" data-card-created="1584867110"><a href="https://www.reddit.com/r/CoronavirusMemes/comments/fi866e/coronavirus_is_changing_us/">Coronavirus is changing us</a> from <a href="http://www.reddit.com/r/CoronavirusMemes">r/CoronavirusMemes</a></blockquote>
-<script async src="//embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
+<blockquote class="reddit-card" data-card-created="1584867110">
+    <a href="https://www.reddit.com/r/CoronavirusMemes/comments/fi866e/coronavirus_is_changing_us/">Coronavirus is changing us</a> from <a href="http://www.reddit.com/r/CoronavirusMemes">r/CoronavirusMemes</a></blockquote>
